@@ -1,0 +1,97 @@
+MEDSPOK WEBSITE — HOW TO PUT IT ONLINE WITH VERCEL
+==================================================
+
+This folder is the complete website. Seven files, nothing else needed.
+
+  index.html          Home page  (must keep this exact name)
+  products.html       Products
+  rent-or-buy.html    Rent or buy
+  services.html       Services
+  about.html          About
+  contact.html        Contact
+  medspok-catalogue-2026.pdf
+
+
+OPTION 1 — VERCEL COMMAND LINE  (most reliable, no GitHub needed)
+-----------------------------------------------------------------
+
+1. Install Node.js from  https://nodejs.org  (the LTS button)
+
+2. Open Terminal (Mac) or Command Prompt (Windows)
+
+3. Go into this folder. For example, if it is in Downloads:
+
+       cd Downloads/medspok-vercel
+
+4. Run:
+
+       npx vercel login
+
+   Enter your email and confirm from the link it sends you.
+
+5. Run:
+
+       npx vercel deploy --prod
+
+   Answer the questions:
+
+       Set up and deploy?              Y
+       Which scope?                    press Enter
+       Link to existing project?       N
+       What's your project's name?     medspok
+       In which directory is your code located?    ./      <- just press Enter
+       Want to modify these settings?  N
+
+Your website address is printed at the end. That is it — no build settings,
+no output directory, nothing else to configure.
+
+
+OPTION 2 — GITHUB, THEN VERCEL
+-------------------------------
+
+1. On GitHub, create a repository, then choose "uploading an existing file"
+
+2. Drag all seven files in and commit.
+
+   IMPORTANT: the repository must show index.html in its file list.
+   If it shows a folder instead, Vercel returns 404: NOT_FOUND.
+
+3. In Vercel: Add New -> Project -> Import your repository -> Deploy
+
+
+IF YOU SEE 404: NOT_FOUND
+--------------------------
+
+It means Vercel cannot find index.html at the top level. Check, in order:
+
+  1. Is there a vercel.json file anywhere? Delete it. This site needs none,
+     and it is the usual cause of this error.
+
+  2. On GitHub, is index.html visible in the repository file list, or is it
+     hidden inside a folder? It must be at the top level.
+
+  3. In Vercel -> Settings -> Build and Deployment, all of these must be
+     empty or default:
+
+         Framework Preset     Other
+         Build Command        (empty)
+         Output Directory     (empty)
+         Root Directory       (empty)
+
+     If anything was typed in there earlier, clear it and redeploy.
+
+
+ADDING YOUR OWN DOMAIN LATER
+-----------------------------
+
+Vercel -> Settings -> Domains -> Add, then enter medspok.in and follow the
+DNS instructions it gives you.
+
+
+A NOTE ON FILE SIZE
+--------------------
+
+services.html is around 17 MB because the oxygen concentrator setup film is
+built into it. It works, but it is slow to open on mobile data. If you would
+rather it were fast, ask for the version without the film and that page drops
+to under 1 MB.
